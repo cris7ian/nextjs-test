@@ -1,0 +1,17 @@
+{
+  "name": "epl_next",
+  "version": "1.0.0",
+  "description": "EPL table",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Cristian Caroli",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.15.3",
+    "next": "^1.2.3"
+  }
+}
