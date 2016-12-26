@@ -7,20 +7,12 @@ export default class extends React.Component {
     static async getInitialProps ({query}) {
         // Get id from query
         const id = query.id;
-        if(!process.browser) {
-            // Still on the server so make a request
-            const res = await axios.get('http://api.football-data.org/v1/competitions/426/leagueTable')
-            return {
-                data: res.data,
-                // Filter and return data based on query
-                standing: res.data.standing.filter(s => s.position == id)
-            }
-        } else {
-            // Not on the server just navigating so use
-            // the cache
-            const bplData = JSON.parse(sessionStorage.getItem('bpl'));
+        // Still on the server so make a request
+        const res = await axios.get('/api/leagueTable')
+        return {
+            data: res.data,
             // Filter and return data based on query
-            return {standing: bplData.standing.filter(s => s.position == id)}
+            standing: res.data.standing.filter(s => s.position == id)
         }
     }
 

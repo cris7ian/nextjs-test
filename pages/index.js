@@ -5,12 +5,8 @@ import Link from 'next/link'
 
 export default class extends React.Component {
   static async getInitialProps () {
-    if(!process.browser) {
-      const res = await axios.get('http://api.football-data.org/v1/competitions/426/leagueTable')
-      return {data: res.data}
-    } else {
-      return {data: JSON.parse(sessionStorage.getItem('bpl'))}
-    }
+    const res = await axios.get('/api/leagueTable')
+    return {data: res.data}
   }
 
   componentDidMount () {
@@ -39,7 +35,7 @@ export default class extends React.Component {
                     <th>W</th>
                     <th>D</th>
                     <th>L</th>
-                    <th>More</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>

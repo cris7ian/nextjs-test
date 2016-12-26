@@ -4,14 +4,15 @@
   "description": "EPL table",
   "main": "index.js",
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "node server.js",
+    "start": "node server.js"
   },
   "author": "Cristian Caroli",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.15.3",
-    "next": "^1.2.3"
+    "express": "^4.14.0",
+    "http-proxy": "^1.16.2",
+    "next": "^2.0.0-beta"
   }
 }
