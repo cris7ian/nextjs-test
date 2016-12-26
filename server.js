@@ -22,7 +22,7 @@ app.prepare()
     return handle(req, res)
   })
 
-  server.listen(80, (err) => {
+  server.listen(3000, (err) => {
     if (err) throw err
     console.log('> Ready on http://localhost')
   })
