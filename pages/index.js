@@ -3,15 +3,14 @@ import Page from '../components/page'
 import Head from 'next/head'
 import axios from 'axios'
 import Link from 'next/link'
+import parseURL from '../helpers/parseurl'
+require('isomorphic-fetch');
 
 export default class extends React.Component {
-  static async getInitialProps () {
-    const res = await axios.get('/api/leagueTable', {
-      proxy: {
-        host: '127.0.0.1',
-        port: 3000,
-    }})
-    return {data: res.data}
+  static async getInitialProps ({req}) {
+    const res = await fetch(parseURL(req, '/leagueTable'))
+    const data = await res.json()
+    return { data: data }
   }
 
   componentDidMount () {
@@ -19,6 +18,7 @@ export default class extends React.Component {
   }
 
   render () {
+    console.log(this.props.data)
     return (
       <Page>
         <Head>
