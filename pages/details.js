@@ -1,23 +1,22 @@
 import React from 'react'
 import Head from 'next/head'
 import Page from '../components/page'
+import parseURL from '../helpers/parseurl'
 import Link from 'next/link'
 import axios from 'axios';
+require('isomorphic-fetch');
 
 export default class extends React.Component {
-    static async getInitialProps ({query}) {
+    static async getInitialProps ({query, req}) {
         // Get id from query
         const id = query.id;
         // Still on the server so make a request
-        const res = await axios.get('/api/leagueTable', {
-          proxy: {
-            host: '127.0.0.1',
-            port: process.env.PORT || 3000,
-        }})
+        const res = await fetch(parseURL(req, '/leagueTable'))
+        const data = await res.json()
         return {
-            data: res.data,
+            data: data,
             // Filter and return data based on query
-            standing: res.data.standing.filter(s => s.position == id)
+            standing: data.standing.filter(s => s.position == id)
         }
     }
 
