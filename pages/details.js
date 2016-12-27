@@ -3,7 +3,6 @@ import Head from 'next/head'
 import Page from '../components/page'
 import parseURL from '../helpers/parseurl'
 import Link from 'next/link'
-import axios from 'axios';
 require('isomorphic-fetch');
 
 export default class extends React.Component {
@@ -13,6 +12,7 @@ export default class extends React.Component {
         // Still on the server so make a request
         const res = await fetch(parseURL(req, '/leagueTable'))
         const data = await res.json()
+        console.log(data)
         return {
             data: data,
             // Filter and return data based on query

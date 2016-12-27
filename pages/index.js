@@ -1,7 +1,6 @@
 import React from 'react'
 import Page from '../components/page'
 import Head from 'next/head'
-import axios from 'axios'
 import Link from 'next/link'
 import parseURL from '../helpers/parseurl'
 require('isomorphic-fetch');
