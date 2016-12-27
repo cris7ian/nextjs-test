@@ -9,7 +9,7 @@ export default class extends React.Component {
     const res = await axios.get('/api/leagueTable', {
       proxy: {
         host: '127.0.0.1',
-        port: 3000,
+        port: process.env.PORT || 3000,
     }})
     return {data: res.data}
   }
